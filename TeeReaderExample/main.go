@@ -2,6 +2,7 @@ package main
 
 // This program downloads a gzip file from a URL and tracks the download progress
 // Based on YT video https://youtu.be/fJHNhL1FUEs?si=EvqKAMRGf1t5dZ9i
+// Data fro https://storage.googleapis.com/books/ngrams/books/datasetsv3.html
 
 import (
 	"bufio"
