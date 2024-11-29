@@ -8,17 +8,29 @@
 <body>
     {{ if . }}
     <main>
-        <p>values</p>
-        {{ range $k, $v := .}}
-            <p>value: {{$k}}</p>
-            <ul> {{range $v}} {{.}} {{end}}</ul>
-        {{end}}
-    <main>
-    {{end}}
+        <h2>Request Details</h2>
+        <p><strong>Method:</strong> {{.Method}}</p>
+        <p><strong>URL:</strong> {{.URL}}</p>
+        <p><strong>Proto:</strong> {{.Proto}}</p>
+        <p><strong>Header:</strong></p>
+        <ul>
+            {{ range $k, $v := .Header }}
+                <li><strong>{{ $k }}:</strong> {{ range $v }}{{ . }} {{ end }}</li>
+            {{ end }}
+        </ul>
+        <p><strong>Form:</strong></p>
+        <ul>
+            {{ range $k, $v := .Form }}
+                <li><strong>{{ $k }}:</strong> {{ range $v }}{{ . }} {{ end }}</li>
+            {{ end }}
+        </ul>
+    </main>
+    {{ end }}
     <h1>Simple HTTP Form</h1>
-    <form action="/submit" method="post">
-        <label for="name">Name:</label><br>
+    <form action="/" method="post">
+        <label for="firstName">First Name:</label><br>
         <input type="text" id="firstName" name="firstName" required><br><br>
+        <label for="lastName">Last Name:</label><br>
         <input type="text" id="lastName" name="lastName" required><br><br>
         <input type="submit" value="Submit">
     </form>
